@@ -33,6 +33,7 @@ jobs:
           environment-file: ${{ matrix.envfile }}
 
       - name: Check Installation
+        shell: bash -l {0}
         run: |
           conda env list
           conda list
