@@ -8,6 +8,7 @@ on:
 jobs:
   tests:
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
@@ -32,5 +33,6 @@ jobs:
 
       - name: Check Installation
         run: |
+          conda env list
           conda list
           pip list
