@@ -28,7 +28,8 @@ jobs:
         with:
           activate-environment: dasky-mpi
           auto-update-conda: false
-          python-version: "3.8"
+          auto-activate-base: false
+          python-version: 3.8
           environment-file: ${{ matrix.envfile }}
 
       - name: Check Installation
