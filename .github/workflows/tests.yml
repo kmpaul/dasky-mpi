@@ -1,0 +1,36 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch: # allows you to trigger manually
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        envfile: []
+        include:
+          - os: ubuntu-latest
+            envfile: env-nix.yml
+          - os: macOS-latest
+            envfile: env-nix.yml
+          - os: windows-latest
+            envfile: env-win.yml
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: dasky-mpi
+          auto-update-conda: false
+          python-version: 3.8
+          environment-file: ${{ matrix.envfile }}
+
+      - name: Check Installation
+        run: |
+          conda list
+          pip list
