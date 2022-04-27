@@ -1,7 +1,0 @@
-name: dasky-mpi
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - mpich
-  - mpi4py
