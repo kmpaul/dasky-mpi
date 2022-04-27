@@ -30,6 +30,8 @@ jobs:
           auto-update-conda: false
           auto-activate-base: false
           python-version: 3.8
+          mamba-version: '*'
+          use-mamba: true
           environment-file: ${{ matrix.envfile }}
 
       - name: Check Installation
